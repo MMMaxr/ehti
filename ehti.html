@@ -1,0 +1,1136 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EHTI 哈迷人格检测｜哈兰德 26 岁生日快乐</title>
+  <meta name="description" content="Erling Haaland Trigger Index：26 个哈迷维度，很多可以触发的小机关。" />
+  <style>
+    :root{
+      --bg:#06172d;--bg2:#091f42;--sky:#6ecbff;--gold:#ffd166;--lime:#8aff80;--pink:#ff5cab;--red:#ff4d6d;
+      --card:rgba(255,255,255,.105);--card2:rgba(255,255,255,.16);
+      --text:#f4fbff;--muted:#b9cee8;--line:rgba(255,255,255,.16);
+      --shadow:0 24px 70px rgba(0,0,0,.34);--radius:24px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+      background:radial-gradient(circle at 18% 5%,rgba(110,203,255,.32),transparent 30%),
+        radial-gradient(circle at 82% 8%,rgba(255,209,102,.22),transparent 26%),
+        linear-gradient(135deg,var(--bg),#03101f 55%,var(--bg2));
+      overflow-x:hidden}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;
+      background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+      background-size:42px 42px;mask-image:radial-gradient(circle at center,#000 15%,transparent 75%)}
+    .orb{position:fixed;border-radius:50%;filter:blur(2px);opacity:.48;
+      animation:float 10s ease-in-out infinite;pointer-events:none;z-index:0}
+    .orb.a{width:160px;height:160px;background:#6ecbff;left:-40px;top:180px}
+    .orb.b{width:120px;height:120px;background:#ff5cab;right:-28px;top:380px;animation-delay:-3s}
+    .orb.c{width:90px;height:90px;background:#ffd166;left:70%;bottom:80px;animation-delay:-6s}
+    @keyframes float{50%{transform:translateY(-30px) translateX(15px) scale(1.08)}}
+
+    .wrap{width:min(1160px, calc(100% - 36px)); margin:auto; position:relative; z-index:1}
+
+    .pill{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);
+      border-radius:999px;padding:10px 14px;color:var(--muted);
+      background:rgba(255,255,255,.08);backdrop-filter:blur(12px);
+      box-shadow:0 8px 24px rgba(0,0,0,.18);cursor:pointer;user-select:none;
+      transition:.2s transform,.2s background}
+    .pill:hover{background:rgba(255,255,255,.16);transform:translateY(-1px)}
+
+    header.hero{position:relative;padding:58px 0 34px;min-height:620px;display:grid;place-items:center}
+    .hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:28px;align-items:center}
+    h1{font-size:clamp(42px,8.6vw,104px);line-height:.92;margin:18px 0 18px;letter-spacing:-.075em;text-wrap:balance}
+    h1 span{display:block}
+    .gradient{background:linear-gradient(90deg,#fff,var(--sky),var(--gold),#fff);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      background-size:220%;animation:shine 5s linear infinite}
+    @keyframes shine{to{background-position:220% center}}
+    .sub{font-size:clamp(16px,2vw,22px);color:var(--muted);line-height:1.7;max-width:720px}
+    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+    .btn{appearance:none;border:0;border-radius:999px;padding:14px 20px;font-weight:900;
+      color:#06172d;background:var(--sky);cursor:pointer;
+      box-shadow:0 14px 30px rgba(110,203,255,.23);
+      transition:.2s transform,.2s filter;font-family:inherit;font-size:14px}
+    .btn:hover{transform:translateY(-2px) scale(1.02);filter:saturate(1.15)}
+    .btn.secondary{background:rgba(255,255,255,.12);color:var(--text);
+      border:1px solid rgba(255,255,255,.18);box-shadow:none}
+    .btn.gold{background:var(--gold)}
+    .btn.danger{background:linear-gradient(135deg,#ff4d6d,#ffb3c1)}
+    .tiny{font-size:13px;color:var(--muted);margin-top:10px}
+
+    .poster{min-height:520px;border:1px solid var(--line);border-radius:36px;
+      background:linear-gradient(160deg, rgba(110,203,255,.16), rgba(255,255,255,.06));
+      box-shadow:var(--shadow);position:relative;overflow:hidden;display:grid;place-items:center}
+    .poster::after{content:"26";position:absolute;right:-24px;bottom:-54px;
+      font-size:220px;font-weight:1000;letter-spacing:-.12em;color:rgba(255,255,255,.08)}
+    .poster .tag{position:absolute;left:18px;top:18px}
+    .poster .counter{position:absolute;right:18px;top:18px;color:var(--muted);font-size:13px;z-index:2}
+    .robot{position:relative;width:min(380px,82%);aspect-ratio:.78;display:grid;place-items:center;
+      cursor:pointer;transform-style:preserve-3d;z-index:1}
+    .head{width:220px;height:220px;border-radius:48% 48% 44% 44%;
+      background:linear-gradient(145deg,#ffe7b7,#ffd28a);
+      box-shadow:inset -20px -26px 40px rgba(120,69,11,.14), 0 30px 70px rgba(0,0,0,.3);
+      position:relative;animation:bob 3s ease-in-out infinite}
+    .hair{position:absolute;top:-44px;left:38px;width:150px;height:90px;
+      border-radius:60% 40% 60% 35%;
+      background:linear-gradient(135deg,#f2d96b,#fff2a6 60%,#bd8f15);
+      transform:rotate(-7deg);
+      box-shadow:24px 10px 0 rgba(248,218,92,.8), -17px 20px 0 rgba(236,203,74,.85)}
+    .eye{position:absolute;top:88px;width:21px;height:21px;border-radius:50%;
+      background:#0b1830;box-shadow:0 0 0 7px rgba(255,255,255,.5)}
+    .eye.l{left:58px}.eye.r{right:58px}
+    .mouth{position:absolute;left:75px;top:142px;width:70px;height:28px;
+      border:6px solid #0b1830;border-top:0;border-radius:0 0 60px 60px}
+    .body{position:absolute;bottom:28px;width:260px;height:150px;
+      border-radius:34px 34px 52px 52px;
+      background:linear-gradient(150deg,#6cabdd,#ffffff 55%,#6cabdd);
+      transform:translateZ(-1px);box-shadow:0 28px 70px rgba(0,0,0,.28)}
+    .body b{position:absolute;inset:30px 0 auto;text-align:center;color:#132c55;
+      font-size:54px;letter-spacing:-.06em}
+    .ball{position:absolute;right:22px;bottom:72px;width:84px;height:84px;border-radius:50%;
+      background:radial-gradient(circle at 35% 30%,#fff,#cbd5e1 70%);
+      border:7px solid #101827;display:grid;place-items:center;color:#111827;font-weight:1000;
+      animation:spin 5s linear infinite;z-index:2}
+    @keyframes bob{50%{transform:translateY(-14px)}}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    section{padding:54px 0;position:relative;z-index:1}
+    .section-title{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:0 0 14px}
+    .section-title h2{font-size:clamp(25px,4vw,44px);margin:0;letter-spacing:-.04em}
+    .section-title p{margin:0;color:var(--muted);max-width:520px;line-height:1.5}
+
+    .ticker{position:relative;white-space:nowrap;overflow:hidden;
+      border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.08);
+      padding:13px 0;margin:0 0 30px;border-radius:16px}
+    .ticker-track{display:inline-flex;gap:40px;white-space:nowrap;
+      animation:marquee 28s linear infinite}
+    .ticker-track span{color:#dff4ff;font-weight:800;flex-shrink:0}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    .progress-panel{border:1px solid rgba(255,255,255,.16);
+      background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.05));
+      border-radius:var(--radius);padding:18px 22px;
+      display:flex;align-items:center;gap:18px;margin-bottom:10px}
+    .progress-label{font-weight:800;color:#dff4ff;white-space:nowrap;font-size:14px}
+    .progress{flex:1;height:12px;background:rgba(0,0,0,.22);border-radius:999px;overflow:hidden}
+    .bar{height:100%;width:0%;background:linear-gradient(90deg,var(--sky),var(--lime),var(--gold));
+      transition:.35s width}
+    .progress-count{color:var(--muted);font-size:13px;white-space:nowrap;min-width:70px;text-align:right}
+
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .card{border:1px solid var(--line);background:var(--card);border-radius:var(--radius);
+      padding:18px;min-height:150px;position:relative;overflow:hidden;
+      box-shadow:0 18px 44px rgba(0,0,0,.18);
+      transition:.18s transform,.18s background,.18s border-color;cursor:pointer}
+    .card:hover{transform:translateY(-6px) rotate(var(--tilt,0deg));background:var(--card2);
+      border-color:rgba(255,255,255,.34)}
+    .card h3{margin:0 0 6px;font-size:17px;line-height:1.3}
+    .card .code{font-size:28px;font-weight:1000;letter-spacing:-.08em;color:var(--gold);line-height:1}
+    .card p{color:var(--muted);line-height:1.5;margin:8px 0 0;font-size:13px}
+    .card::after{content:attr(data-trigger);position:absolute;right:12px;bottom:8px;
+      color:rgba(255,255,255,.16);font-weight:1000;font-size:40px;letter-spacing:-.08em}
+
+    .quiz{display:grid;gap:14px}
+    .q{position:relative;padding:20px;border-radius:22px;background:var(--card);
+      border:1px solid rgba(255,255,255,.14);overflow:hidden}
+    .q.answered{background:linear-gradient(135deg,rgba(110,203,255,.16),rgba(255,209,102,.10))}
+    .q::after{content:attr(data-emoji);position:absolute;right:20px;top:16px;
+      font-size:56px;opacity:.12;transform:rotate(8deg)}
+    .q h3{margin:0 0 8px;font-size:19px}
+    .q-context{color:var(--muted);font-size:14px;line-height:1.7;margin:0 0 14px;
+      padding-left:10px;border-left:3px solid rgba(110,203,255,.4)}
+    .choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .choice{border:1px solid rgba(255,255,255,.15);background:rgba(0,0,0,.18);
+      color:var(--text);border-radius:16px;padding:14px;cursor:pointer;text-align:left;
+      font-weight:700;line-height:1.5;transition:.17s;font-family:inherit;font-size:14px;
+      position:relative;overflow:hidden}
+    .choice:hover{transform:translateY(-2px);background:rgba(110,203,255,.18)}
+    .choice.selected{border-color:var(--gold);box-shadow:0 0 0 3px rgba(255,209,102,.18);
+      background:rgba(255,209,102,.18)}
+    .choice .letter{position:absolute;right:10px;bottom:6px;font-size:22px;font-weight:1000;
+      color:rgba(255,209,102,.4);letter-spacing:-.05em}
+
+    .result{padding:24px;display:grid;gap:16px}
+    .result-card{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:center}
+    .typebox{padding:24px;border-radius:24px;
+      background:radial-gradient(circle at 20% 10%,rgba(255,209,102,.25),transparent 32%),rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.14)}
+    .type{font-size:clamp(46px,8vw,94px);font-weight:1000;letter-spacing:-.06em;
+      color:var(--gold);line-height:.9}
+    .desc{color:#d9ecff;line-height:1.75;font-size:16px}
+    .radar{min-height:270px;border-radius:24px;background:rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.12);display:grid;place-items:center;
+      position:relative;overflow:hidden}
+    .pitch{width:86%;height:190px;border:3px solid rgba(255,255,255,.55);
+      border-radius:18px;position:relative}
+    .pitch::before{content:"";position:absolute;left:50%;top:0;bottom:0;
+      border-left:3px solid rgba(255,255,255,.34)}
+    .pitch::after{content:"⚽";position:absolute;left:var(--x,50%);top:var(--y,46%);
+      font-size:44px;filter:drop-shadow(0 10px 12px rgba(0,0,0,.45));transition:.5s}
+    .net{position:absolute;right:7%;top:40%;font-size:42px}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .chip{padding:8px 11px;border-radius:999px;background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.12);color:#dff4ff;font-weight:800;font-size:13px}
+    .share{width:100%;min-height:130px;border-radius:18px;
+      border:1px dashed rgba(255,255,255,.28);background:rgba(0,0,0,.18);
+      color:#eaf8ff;padding:14px;line-height:1.55;font-family:inherit;resize:vertical}
+    .top-dims{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .dim-tag{padding:6px 10px;border-radius:999px;font-size:12px;font-weight:900;
+      background:rgba(110,203,255,.18);border:1px solid rgba(110,203,255,.3);color:#cdeeff}
+
+    .triggers{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+    .trigger{min-height:92px;border-radius:20px;border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.09);color:var(--text);font-weight:950;cursor:pointer;
+      position:relative;overflow:hidden;transition:.18s;font-family:inherit}
+    .trigger:hover{background:rgba(255,255,255,.17);transform:translateY(-2px)}
+    .trigger span{display:block;font-size:28px;margin-bottom:4px}
+
+    .keyboard-box{margin-top:18px;padding:18px;border-radius:20px;
+      background:linear-gradient(135deg,rgba(255,209,102,.12),rgba(110,203,255,.1));
+      border:1px solid rgba(255,209,102,.25)}
+    .keyboard-box h4{margin:0 0 10px;font-size:16px;color:#fff;display:flex;align-items:center;gap:8px}
+    .keyboard-box .kbd-input{width:100%;padding:12px 14px;border-radius:12px;
+      border:2px solid rgba(110,203,255,.35);background:rgba(0,0,0,.28);
+      color:#fff;font-size:16px;letter-spacing:2px;font-weight:800;
+      outline:none;transition:.2s border-color;font-family:inherit}
+    .keyboard-box .kbd-input:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(255,209,102,.18)}
+    .keyboard-box .kbd-hint{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+    .keyboard-box .kbd-hint code{background:rgba(255,255,255,.12);padding:5px 10px;border-radius:8px;
+      font-size:12px;color:#fff;border:1px solid rgba(255,255,255,.15);cursor:pointer;
+      transition:.15s}
+    .keyboard-box .kbd-hint code:hover{background:rgba(255,209,102,.2);border-color:rgba(255,209,102,.4)}
+    .keyboard-box .tiny-note{color:var(--muted);font-size:12px;margin-top:10px;line-height:1.6}
+
+    .easter{position:fixed;left:50%;top:18%;transform:translateX(-50%) scale(.8);
+      z-index:30;pointer-events:none;background:#fff;color:#08213f;border-radius:999px;
+      padding:13px 18px;font-weight:1000;box-shadow:0 20px 50px rgba(0,0,0,.32);
+      opacity:0;transition:.28s}
+    .easter.show{opacity:1;transform:translateX(-50%) scale(1)}
+    .confetti{position:fixed;inset:0;pointer-events:none;z-index:29}
+    .particle{position:absolute;font-size:22px;animation:fall 1200ms ease-out forwards}
+    @keyframes fall{to{transform:translate(var(--dx),82vh) rotate(720deg);opacity:0}}
+    .float-text{position:fixed;pointer-events:none;z-index:30;font-weight:1000;
+      animation:floatUp 1.1s ease-out forwards;
+      text-shadow:0 8px 20px rgba(0,0,0,.35)}
+    @keyframes floatUp{to{transform:translateY(-90px) scale(1.4);opacity:0}}
+    .floating-ball{position:fixed;font-size:34px;z-index:10;cursor:pointer;
+      animation:dribble 6s ease-in-out infinite;
+      filter:drop-shadow(0 12px 14px rgba(0,0,0,.35))}
+    @keyframes dribble{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(16px,-24px) rotate(30deg)}}
+    .shake{animation:shake .34s linear}
+    .flash{animation:flash .8s ease}
+    @keyframes shake{20%{transform:translateX(-5px) rotate(-1deg)}40%{transform:translateX(5px) rotate(1deg)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+    @keyframes flash{0%,100%{filter:none}50%{filter:brightness(1.8) saturate(1.8)}}
+
+    .toastlog{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .mini{font-size:13px;color:#aee8ff;background:rgba(110,203,255,.12);
+      border:1px solid rgba(110,203,255,.18);border-radius:999px;padding:7px 10px}
+
+    .footer{color:var(--muted);text-align:center;padding:30px 0 60px;line-height:1.6}
+
+    @media(max-width:900px){
+      .hero-grid,.cards,.triggers{grid-template-columns:1fr 1fr}
+      .poster{min-height:430px}
+      .choices,.result-card{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){
+      .cards,.triggers{grid-template-columns:1fr}
+      .choices{grid-template-columns:1fr}
+      .wrap{width:min(100% - 24px,1160px)}
+      .hero{padding-top:34px}
+      h1{font-size:48px}
+      .poster{min-height:360px}
+      .head{width:180px;height:180px}.body{width:220px}.ball{width:66px;height:66px}
+      .section-title{display:block}.section-title p{margin-top:8px}
+      .progress-panel{flex-wrap:wrap}
+    }
+  </style>
+</head>
+<body>
+  <div class="orb a"></div><div class="orb b"></div><div class="orb c"></div>
+  <div class="easter" id="easter">work hard, stay humble, and smiling.</div>
+  <div class="confetti" id="confetti"></div>
+
+  <header class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="pill" id="birthdayBadge">⚽ 2026.07.21 · 哈兰德 26 岁生日企划</span>
+        <h1><span class="gradient">EHTI</span><span style="font-size:.55em;color:var(--muted);margin-top:8px">哈迷人格检测</span></h1>
+        <p class="sub">Erling Haaland Trigger Index：26 个字母 × 26 个哈迷维度。stay humble, work hard, smiling.</p>
+        <div class="cta">
+          <button class="btn gold" onclick="document.querySelector('#quiz-section').scrollIntoView({behavior:'smooth'})">开始检测</button>
+          <button class="btn secondary" id="chaosBtn">一键魔人模式</button>
+          <button class="btn secondary" id="randomBtn">随机生成人格</button>
+        </div>
+      </div>
+      <div class="poster" id="poster">
+        <span class="pill tag">26 个维度，1 个 9 号</span>
+        <span class="counter" id="counter">触发值：0</span>
+        <div class="robot" id="robot" title="点我，触发哈兰德宇宙">
+          <div class="body"><b>9</b></div>
+          <div class="head"><div class="hair"></div><i class="eye l"></i><i class="eye r"></i><div class="mouth"></div></div>
+          <div class="ball" id="ball">⚽</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="ticker">
+      <div class="ticker-track">
+        <span>⚽ happy birthday erling</span>
+        <span>🎂 twenty six but still hungry</span>
+        <span>🏟️ work hard stay humble smiling</span>
+        <span>🍮 his son is odin, he is odin's father</span>
+        <span>🤖 norwegian goal api online</span>
+        <span>🥅 defenders: not again</span>
+        <span>💙 once a blue, always a blue</span>
+        <span>⚽ happy birthday erling</span>
+        <span>🎂 twenty six but still hungry</span>
+        <span>🏟️ work hard stay humble smiling</span>
+        <span>🍮 his son is odin, he is odin's father</span>
+        <span>🤖 norwegian goal api online</span>
+        <span>🥅 defenders: not again</span>
+        <span>💙 once a blue, always a blue</span>
+      </div>
+    </div>
+
+    <section>
+      <div class="section-title">
+        <h2>26 个哈迷维度</h2>
+        <p>从 A 到 Z，每个字母都是一块人格拼图。最后生成的 4 字母人格，就是你得分最高的四个维度首字母。</p>
+      </div>
+      <div class="cards" id="dimensionCards"></div>
+    </section>
+
+    <section id="quiz-section">
+      <div class="section-title">
+        <h2>EHTI 快速检测</h2>
+        <p>26 题，每题四选一。别想太久，哈兰德冲刺的时候也没给中卫写论文时间。</p>
+      </div>
+      <div class="progress-panel">
+        <span class="progress-label">检测进度</span>
+        <div class="progress"><div class="bar" id="bar"></div></div>
+        <span class="progress-count" id="progressCount">0 / 26</span>
+      </div>
+      <div class="quiz" id="quiz" style="margin-top:16px"></div>
+      <div class="cta" style="margin-top:18px">
+        <button class="btn gold" onclick="calcResult()">生成我的人格</button>
+        <button class="btn secondary" onclick="randomFill()">我让瓜帅替我选</button>
+        <button class="btn secondary" onclick="resetQuiz()">重测，刚才是战术烟雾弹</button>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>你的人格报告</h2>
+        <p>26 个维度中，得分最高的 4 个首字母组成你的专属人格代码。下面是基于你的选择生成的解读。</p>
+      </div>
+      <div class="panel result" id="resultPanel">
+        <div class="result-card">
+          <div class="typebox">
+            <div class="type" id="type">— — — —</div>
+            <h2 id="typeName" style="margin:8px 0 6px">未检测的蓝月观察员</h2>
+            <p class="desc" id="desc">完成上面的 26 道题后，系统会从 26 个维度中提炼出你最突出的 4 个，拼成你的专属 4 字母人格代码。</p>
+            <div class="top-dims" id="topDims">
+              <span class="dim-tag">A 维度</span>
+              <span class="dim-tag">B 维度</span>
+              <span class="dim-tag">C 维度</span>
+              <span class="dim-tag">D 维度</span>
+            </div>
+            <div class="chips" id="chips">
+              <span class="chip">生日限定</span><span class="chip">26维</span><span class="chip">4字母</span>
+            </div>
+          </div>
+          <div class="radar">
+            <div class="pitch" id="pitch"><div class="net">🥅</div></div>
+          </div>
+        </div>
+        <textarea class="share" id="share" readonly>我的 EHTI 还没测完，但我已经在禁区里闻到进球味了。</textarea>
+        <div class="cta">
+          <button class="btn" id="copyBtn">复制结果文案</button>
+          <button class="btn secondary" onclick="birthdayMode()">变成生日烟花</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>可以触发的快乐按钮</h2>
+        <p>放了一排可以点的：这区就是。多放点可以触发，生日派对加预算。</p>
+      </div>
+      <div class="triggers">
+        <button class="trigger" data-action="confetti"><span>🎉</span>生日彩带</button>
+        <button class="trigger" data-action="goal"><span>🥅</span>进球警报</button>
+        <button class="trigger" data-action="robot"><span>🤖</span>魔人语音</button>
+        <button class="trigger" data-action="hair"><span>🧑‍🦳</span>金发滤镜</button>
+        <button class="trigger" data-action="var"><span>📺</span>VAR 重看</button>
+        <button class="trigger" data-action="meat"><span>🥩</span>赛前加餐</button>
+        <button class="trigger" data-action="norway"><span>🇳🇴</span>挪威冷风</button>
+        <button class="trigger" data-action="hat"><span>🎩</span>帽子戏法</button>
+      </div>
+
+      <div class="keyboard-box">
+        <h4>⌨️ 彩蛋输入框（点一下开始输入）</h4>
+        <input type="text" class="kbd-input" id="kbdInput" placeholder="在这里输入暗号，比如 haaland、goal、26..." autocomplete="off" spellcheck="false" />
+        <div class="kbd-hint" id="kbdHints">
+          <code>26</code>
+          <code>haaland</code>
+          <code>goal</code>
+          <code>hattrick</code>
+          <code>kdb</code>
+          <code>var</code>
+          <code>9</code>
+          <code>sugar</code>
+          <code>odin</code>
+          <code>youtube</code>
+        </div>
+        <p class="tiny-note">提示：输入框获得焦点后直接打字即可。也可以不用点输入框，直接在页面上敲键盘。彩蛋触发后输入会清空。</p>
+      </div>
+      <div class="toastlog" id="toastlog"></div>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    Made for Haaland's 26th birthday · EHTI = Erling Haaland Trigger Index · work hard, stay humble, smiling.
+  </footer>
+
+<script>
+const dims = {
+  A:['Aura 气场','觉得后卫退半步不是战术，是求生。他站在禁区里，空气浓度都变了。'],
+  B:['BVB 黄黑回忆','黄黑滤镜一开，青春直接越位。威斯特法伦的南看台，永远有他的位置。'],
+  C:['City 蓝月信徒','蓝色球衣一穿，连天空都像会助攻。伊蒂哈德的风里都飘着进球味。'],
+  D:['Derby 大场面','越是吵，越想看他用进球把音量键按爆。德比之夜，嗓子可以报废。'],
+  E:['Early-run 启动先锋','直塞还没出脚，你已经在禁区里找位置了。启动速度比边卫快三拍，第一排观众席永久席位。'],
+  F:['Fast-break 反击','一看到断球就站起来，比边锋还先启动冲反击模式。反击号角就是你的发令枪。'],
+  G:['Goal 进球收藏','每一粒进球都像收藏品一样在你脑子里归档。年份、对手、角度、庆祝动作，检索速度比数据库还快。'],
+  H:['Highlight 集锦','三分钟集锦循环二十遍，硬说这是复盘。赛后固定流程，睡前必刷。'],
+  I:['Ice-cold 冷脸党','进球后表情像刚收到会议纪要，但内心已放烟花。表面冷静掌门人。'],
+  J:['Jinx 毒奶艺术','赛前故意说"今天不行"，赛后假装懊悔实则暗爽。毒奶也是一种信仰，反向操作稳得一批。'],
+  K:['Killer 终结者','他一抬脚你就知道有了。不是绝杀也没关系，只要他在禁区里，你就觉得球门比平时大两倍。'],
+  L:['Loyalty 护短协会','谁说"只会吃饼"，你能讲到凌晨两点。护短是基本素养，数据集锦三件套随时上线。'],
+  M:['Meme 梗图制造机','正经分析不会，P 图速度世界级。相册里进球截图比自拍多，表情包比聊天记录多。'],
+  N:['Norse 北欧神话','坚信他是从峡湾里走出来的巨人，他儿子叫 Odin，他自己就是奥丁他爹。每粒进球都是雷神之锤砸下来的。'],
+  O:['Optimist 乐天主义','永远相信下一球会进。0-2 落后？没事，还有时间。补时三分钟？够他进俩。乐观是你的超能力。'],
+  P:['Pass 喂饼专家','布丁组合忠实信徒，专门研究德布劳内的传球线路。直塞、传中、倒三角，他一眼就知道球会去哪。哈兰德进的球，一半军功章记在 KDB 头上。'],
+  Q:['Quiet 默念型','嘴里不说，心里每球都在念经。默念型应援，主打一个心诚则灵。'],
+  R:['Robot 机器人信徒','相信哈兰德不是人类，是挪威进球 API。出故障了？不，那是更新固件。'],
+  S:['Sugar 嗑糖人','专门追哈兰德和 Isabella 的小两口日常。进球重要，但糖更甜，狗粮吃到饱。'],
+  T:['Tap-in 门前嗅觉','嘴上说"吃饼"，心里知道饼也是跑出来的。门前嗅觉鉴赏家。'],
+  U:['Ultra 死忠喊将','90 分钟不停嘴，嗓子哑了是勋章。你不是在看球，你是在远程助威。'],
+  V:['VAR 阴影','每次庆祝前先看裁判手势，条件反射。不是你悲观，是 VAR 教你做人。'],
+  W:['Warm-up 热身观察','赛前热身就开始分析状态。看他颠几下球，你已经知道今天进几个。'],
+  X:['X-factor 未知因子','坚信他身上有科学解释不了的东西。比如为什么球总是莫名其妙到他脚下。'],
+  Y:['Youtuber 粉丝','追他的 vlog、纪录片、采访剪辑。场上魔人，场下憨憨，订阅列表里永远置顶。'],
+  Z:['Zen 最终形态','相信他还没到上限。每一年都觉得"这是巅峰了吧"，然后下一年他又进化了。']
+};
+
+const qs = [
+  {
+    title:'开场 5 分钟', emoji:'⏱️',
+    context:'比赛刚开场 5 分钟，队友在后场倒脚找节奏，你已经坐直了身体。',
+    options:[
+      {letter:'E', text:'我已经喊"今天至少进俩"，弹幕可以作证。开局就有开局的样子。'},
+      {letter:'W', text:'仔细看热身状态和跑动节奏。他今天状态好不好，前5分钟就有端倪。'},
+      {letter:'Q', text:'表面淡定，心里已经把所有进球路线都演了一遍。默念型应援。'},
+      {letter:'J', text:'故意说"今天可能哑火"，先毒为敬。反向操作，稳。'}
+    ]
+  },
+  {
+    title:'边路抬头的瞬间', emoji:'📡',
+    context:'边路球员抬头看了一眼禁区，你知道传中马上就来。你的第一反应是——',
+    options:[
+      {letter:'T', text:'传！传！传！不传我替他急！这位置不传等过年？门前嗅觉告诉我有了。'},
+      {letter:'F', text:'别急，弱侧套上才是答案。要看防守落位再决定传中还是内切反击。'},
+      {letter:'A', text:'他往禁区里一站，后卫就已经开始抖了。气场碾压，球自然会来。'},
+      {letter:'O', text:'先看越位线！别等庆祝到一半被吹掉。越位焦虑，懂的都懂。'}
+    ]
+  },
+  {
+    title:'"只会吃饼"评论', emoji:'🥧',
+    context:'网上有人说"哈兰德只会吃饼"，你刷到这条评论时——',
+    options:[
+      {letter:'L', text:'立刻打开 PPT 模式：数据、集锦、关键战表现，一一反驳。护短是天职。'},
+      {letter:'M', text:'存截图，晚点做梗图反击。正经辩论不如一张表情包杀伤力大。'},
+      {letter:'I', text:'冷笑：下一场他会自己回复。用进球说话，比我打字有用。'},
+      {letter:'T', text:'能把饼吃进去就是顶级厨师。你行你上啊，别光说。'}
+    ]
+  },
+  {
+    title:'进球后的表情', emoji:'🧘',
+    context:'他进球后只是淡定地张开双臂，没有夸张庆祝。你——',
+    options:[
+      {letter:'I', text:'我截图做头像，保持神秘杀手人设。冷脸才是最帅的。'},
+      {letter:'E', text:'我跟着跳起来，客厅就是伊蒂哈德。他冷归他冷，我先疯为敬。'},
+      {letter:'R', text:'机器人模式：beep，目标已锁定，任务完成。他就是个进球机器。'},
+      {letter:'H', text:'立刻找集锦多角度回放。看一百遍都不腻。'}
+    ]
+  },
+  {
+    title:'德比日前夜', emoji:'🌃',
+    context:'明天就是曼彻斯特德比，今晚你的状态是——',
+    options:[
+      {letter:'D', text:'提前三天紧张，像我要亲自首发。失眠了，满脑子都是德比名场面。'},
+      {letter:'U', text:'嗓子已经开始热身了。明天必须喊赢对面球迷，气势不能输。'},
+      {letter:'W', text:'翻双方最近五场战术分析。战术党赛前不睡觉，睡了也在想阵容。'},
+      {letter:'K', text:'最期待 80 分钟之后。绝杀时刻才是德比的灵魂。'}
+    ]
+  },
+  {
+    title:'错失良机后', emoji:'😵‍💫',
+    context:'一个必进球被他打偏了，你第一反应——',
+    options:[
+      {letter:'J', text:'没事，下一个球门会道歉。错过的都会以另一种方式回来。玄学护佑。'},
+      {letter:'G', text:'回放三遍：这脚触球角度可以优化。数据党开始分析技术动作。'},
+      {letter:'V', text:'还好没越位……不对，打偏了啊！VAR 创伤后遗症犯了。'},
+      {letter:'P', text:'要是德布劳内传就有了。传中质量和时机太重要，喂饼也是技术活。'}
+    ]
+  },
+  {
+    title:'帽子戏法敏感度', emoji:'🎩',
+    context:'他刚打进第二球，你的想法是——',
+    options:[
+      {letter:'H', text:'进一个我就开始找帽子了。第三球还会远吗？集锦党提前准备。'},
+      {letter:'K', text:'已经在想绝杀庆祝动作了。帽子戏法加绝杀，双倍快乐。'},
+      {letter:'V', text:'第 70 分钟前不贷款，怕被换下。稳一点，别毒奶自己。'},
+      {letter:'E', text:'朋友圈文案已经写好了，就等第三球。先发制人。'}
+    ]
+  },
+  {
+    title:'挪威国家队滤镜', emoji:'🇳🇴',
+    context:'看挪威国家队的比赛，你的注意力主要在——',
+    options:[
+      {letter:'N', text:'奥丁他爸今天状态怎么样。峡湾边的巨人，永远的挪威骄傲。'},
+      {letter:'T', text:'中场能不能送出像样的传球？国家队供给问题令人头大。'},
+      {letter:'R', text:'挪威进球 API 是否正常运行。今天的固件版本稳不稳定？'},
+      {letter:'A', text:'对方后卫看到他就开始后退的样子，太爽了。气场碾压现场。'}
+    ]
+  },
+  {
+    title:'身体对抗名场面', emoji:'💪',
+    context:'他扛着对方后卫跑了三米然后进球。你——',
+    options:[
+      {letter:'U', text:'当场起立嘶吼，嗓子直接报废。这球值得喊到失声。'},
+      {letter:'T', text:'他卡位路线比力气更恐怖。不是硬怼，是巧劲加身体，门前嗅觉拉满。'},
+      {letter:'N', text:'北欧血统的力量，峡湾男人的基因。奥丁他爸，名不虚传。'},
+      {letter:'M', text:'立刻存 GIF，这图能用到赛季末。梗图制造机的素材库又丰富了。'}
+    ]
+  },
+  {
+    title:'社媒发疯程度', emoji:'📣',
+    context:'他进球后的 5 分钟内，你的社交媒体状态是——',
+    options:[
+      {letter:'E', text:'连发三条动态，每条不同角度。激动的心，颤抖的手。'},
+      {letter:'Q', text:'只发一个⚽，懂的都懂。千言万语，尽在一个 emoji。'},
+      {letter:'M', text:'P 图、剪集锦、写文案，三件套安排上。梗图制造机输出高峰期。'},
+      {letter:'I', text:'表面刷手机不动声色，内心已经放了三遍烟花。冷面党的自我修养。'}
+    ]
+  },
+  {
+    title:'被替换下场时', emoji:'🔄',
+    context:'比赛第 75 分钟，他被换下。你的反应——',
+    options:[
+      {letter:'J', text:'瓜帅你是不是疯了！先毒奶教练组，反向操作保胜局。'},
+      {letter:'Z', text:'留力备战下一场，合理轮换。他休息好才能继续进化。'},
+      {letter:'K', text:'这么早换？万一对面反扑怎么办。终结者不允许提前下班。'},
+      {letter:'W', text:'看他下场时的体能状态和表情。热身观察延续到了赛后。'}
+    ]
+  },
+  {
+    title:'对手球迷挑衅', emoji:'👎',
+    context:'对方球迷在网上挑衅说"他就是靠体系"。你会——',
+    options:[
+      {letter:'L', text:'立刻甩出 10 条数据 5 个集锦。护短是刻进 DNA 的，不能输。'},
+      {letter:'I', text:'微笑：联赛结束看积分榜。冷脸回击，最杀人。'},
+      {letter:'R', text:'笑了，机器人靠什么体系？他自己就是体系。'},
+      {letter:'M', text:'存下这条评论，进球后挖坟。梗图制造机的复仇计划启动。'}
+    ]
+  },
+  {
+    title:'赛前热身观察', emoji:'🔥',
+    context:'热身阶段，你最关注的是——',
+    options:[
+      {letter:'W', text:'看他颠球那几下、冲刺速度、射门脚感。热身状态决定比赛状态，懂的都懂。'},
+      {letter:'H', text:'热身进球也算集锦素材。集锦党不放过任何一个镜头。'},
+      {letter:'P', text:'看德布劳内赛前热身的传球脚法。喂饼大师的手感，热身就能看出来。'},
+      {letter:'Q', text:'心里默默给每个动作打分。默念型应援，从热身就开始了。'}
+    ]
+  },
+  {
+    title:'点球大战时刻', emoji:'🎯',
+    context:'点球大战轮到他主罚。你——',
+    options:[
+      {letter:'I', text:'稳了，他点球从来不让人失望。我一点都不慌（其实手心全是汗）。'},
+      {letter:'V', text:'屏住呼吸默念：别踢飞别踢飞。VAR 创伤后对一切都小心。'},
+      {letter:'T', text:'看他助跑节奏和眼神。门前嗅觉党连点球都能闻出角度。'},
+      {letter:'O', text:'先确认他有没有提前进线。越位焦虑延伸到了点球点。'}
+    ]
+  },
+  {
+    title:'赛后数据分析', emoji:'📊',
+    context:'比赛结束后，你第一件事是——',
+    options:[
+      {letter:'G', text:'立刻查数据：进球、助攻、xG、射门数……一个都不能少。数据党睡前仪式。'},
+      {letter:'H', text:'刷集锦，刷三遍起步。看不够，真的看不够。'},
+      {letter:'W', text:'看战术分析，重点看跑位和配合。热身观察党赛后延续。'},
+      {letter:'Y', text:'等 up 主更新复盘视频。YouTuber 粉丝，追更比追番勤。'}
+    ]
+  },
+  {
+    title:'新援加盟反应', emoji:'🆕',
+    context:'曼城签下了一位新的攻击型中场。你第一反应——',
+    options:[
+      {letter:'C', text:'太好了！蓝月军团越来越强了！City 人 City 魂。'},
+      {letter:'T', text:'又多一个喂饼的！门前嗅觉党狂喜，饼要吃不完了。'},
+      {letter:'Z', text:'看磨合，化学反应比单堆球星重要。最终形态还在进化。'},
+      {letter:'P', text:'新人会不会带新的庆祝甜点？甜系选手关注点永远清奇。'}
+    ]
+  },
+  {
+    title:'下赛季预期', emoji:'📈',
+    context:'展望下个赛季，你觉得他会——',
+    options:[
+      {letter:'Z', text:'继续进化，每年都比去年更强。他的上限在哪？没人知道。'},
+      {letter:'G', text:'数据再翻一番。进球收藏党已经在算下赛季的账了。'},
+      {letter:'V', text:'别期待太高，小心 VAR 和伤病。希望越大失望越大，佛系看球。'},
+      {letter:'N', text:'奥丁他爸的新征程。挪威巨人还在书写神话。'}
+    ]
+  },
+  {
+    title:'场下的他', emoji:'🎬',
+    context:'你最沉迷哈兰德的哪一面？',
+    options:[
+      {letter:'Y', text:'vlog 和纪录片里的憨憨样子。场上魔人，场下巨可爱，YouTuber 粉头子。'},
+      {letter:'S', text:'和 Isabella 的小两口日常。嗑糖人表示：这糖我能嗑一年。'},
+      {letter:'P', text:'德布劳内的传球视野和脚法。喂饼大师的艺术，百看不厌。'},
+      {letter:'R', text:'采访里的冷面机器人感。work hard stay humble，人设焊死。'}
+    ]
+  },
+  {
+    title:'嗑糖视角', emoji:'💞',
+    context:'刷到哈兰德和 Isabella 的同框照片，你——',
+    options:[
+      {letter:'S', text:'啊啊啊太甜了！存图存图，嗑糖人血糖直接爆表。'},
+      {letter:'H', text:'反复观看找细节。集锦党对一切镜头都不放过，包括糖。'},
+      {letter:'Q', text:'嘴角上扬但不说破。默念型嗑糖，心里甜到打滚。'},
+      {letter:'N', text:'奥丁他爸妈真般配。挪威神话家族，颜值天花板。'}
+    ]
+  },
+  {
+    title:'伤病新闻出现', emoji:'🤕',
+    context:'新闻说他训练中被撞了一下，可能缺席。你——',
+    options:[
+      {letter:'V', text:'先看是哪里伤、严重程度、预计恢复时间。冷静分析，别自乱阵脚。'},
+      {letter:'Q', text:'心里默默祈祷。默念型应援的紧急启动。'},
+      {letter:'U', text:'刷遍所有跟队记者消息，越刷越焦虑。死忠粉坐不住了。'},
+      {letter:'Z', text:'小伤而已，回来后只会更强。Zen 流的终极信念。'}
+    ]
+  },
+  {
+    title:'面对摆大巴', emoji:'🚌',
+    context:'对手全场 10 人退守禁区。你觉得他——',
+    options:[
+      {letter:'T', text:'总有办法的，球会找到他的。门前嗅觉是大巴的克星。'},
+      {letter:'A', text:'他往禁区一站，大巴都得往后退三米。气场压迫，物理上的。'},
+      {letter:'K', text:'等补时。绝杀专治各种摆大巴。不到最后不放弃。'},
+      {letter:'X', text:'总会有莫名其妙的折射和反弹。X 因子，科学解释不了。'}
+    ]
+  },
+  {
+    title:'庆祝动作偏好', emoji:'🕺',
+    context:'你最喜欢他的哪种庆祝？',
+    options:[
+      {letter:'Q', text:'打坐。盘腿坐下闭目养神，进球只是日常修行。佛系庆祝天花板。'},
+      {letter:'R', text:'机器人舞。机械感拉满，像系统完成任务后的标准动作。'},
+      {letter:'S', text:'和队友抱抱笑笑。团队氛围比进球还甜，抱抱才是庆祝的灵魂。'},
+      {letter:'M', text:'难绷抽象表情。自己都不知道在笑什么，但每张都能做表情包。'}
+    ]
+  },
+  {
+    title:'客场远征时', emoji:'✈️',
+    context:'他去客场踢比赛，你——',
+    options:[
+      {letter:'U', text:'熬夜也要看直播。死忠喊将在哪都能喊，屏幕挡不住气势。'},
+      {letter:'C', text:'蓝月走到哪，我看到哪。City 球迷的主场是全世界。'},
+      {letter:'Y', text:'等 vlog 和场外花絮。YouTuber 粉更关心场下的他。'},
+      {letter:'W', text:'分析草皮、天气、对手主场氛围。热身观察赛前做足功课。'}
+    ]
+  },
+  {
+    title:'欧冠关键战', emoji:'🏆',
+    context:'欧冠淘汰赛夜，你的状态是——',
+    options:[
+      {letter:'K', text:'最期待的就是这种大场面。终结者的终极舞台。'},
+      {letter:'D', text:'德比重要，欧冠更重要。大场面爱好者直接升级为超级大场面。'},
+      {letter:'V', text:'又期待又害怕 VAR。每一次禁区接触都让我心跳加速。'},
+      {letter:'G', text:'数据准备好了，就等刷新历史。进球收藏党准备更新总账。'}
+    ]
+  },
+  {
+    title:'他的名言', emoji:'💬',
+    context:'你最有共鸣的一句话是——',
+    options:[
+      {letter:'R', text:'work hard, stay humble, smiling. 机器人格言，刻进 DNA。'},
+      {letter:'Z', text:'我还能变得更好。Zen 最终形态的座右铭。'},
+      {letter:'P', text:'最好的助攻是让前锋不用调整就能射。喂饼大师的自我修养。'},
+      {letter:'T', text:'进球就是我的工作。门前嗅觉党的职业宣言。'}
+    ]
+  },
+  {
+    title:'生日祝福', emoji:'🎂',
+    context:'26 岁生日，你最想对他说——',
+    options:[
+      {letter:'S', text:'愿你和 Isabella 永远甜下去。嗑糖人的祝福，狗粮管饱。'},
+      {letter:'N', text:'奥丁他爸，继续书写挪威神话吧。峡湾的男人，永不停止。'},
+      {letter:'G', text:'愿下赛季进球数比蜡烛多。数据党的硬核祝福。'},
+      {letter:'Z', text:'愿你继续进化，继续让足球世界惊讶。Zen 流的终极期许。'}
+    ]
+  }
+];
+
+const snippets = [
+  'work hard stay humble','奥丁他爸上线','后卫：申请工伤','喂饼大师上线','VAR：先别庆祝',
+  '9号内存占用 100%','生日快乐，进球快乐','这不是吃饼，这是高级餐饮',
+  '中卫看到这里开始冒汗','给他传，真的','北欧高铁进站','魔人启动中……',
+  '门柱：我尽力了','瓜帅：不错','糖度超标警告','YouTube 更新提醒'
+];
+
+const state = {
+  answers: {},
+  scores: {},
+  trigger: 0,
+  taps: 0,
+  totalQuestions: qs.length
+};
+
+// 初始化所有维度分数为0
+Object.keys(dims).forEach(k => state.scores[k] = 0);
+
+const $ = id => document.getElementById(id);
+
+function easter(t) {
+  const e = $('easter');
+  e.textContent = t;
+  e.classList.add('show');
+  clearTimeout(window.__toast);
+  window.__toast = setTimeout(() => e.classList.remove('show'), 1500);
+  const log = $('toastlog');
+  const m = document.createElement('span');
+  m.className = 'mini';
+  m.textContent = t;
+  log.prepend(m);
+  if(log.children.length > 12) log.lastChild.remove();
+}
+
+function bump(n=1) {
+  state.trigger += n;
+  $('counter').textContent = '触发值：' + state.trigger;
+  if(state.trigger === 9) easter('9号触发：你已经进入禁区。');
+  if(state.trigger === 26) birthdayMode();
+  if(state.trigger > 40) document.body.classList.add('flash');
+}
+
+function floatText(x, y, txt) {
+  const e = document.createElement('div');
+  e.className = 'float-text';
+  e.style.left = x + 'px';
+  e.style.top = y + 'px';
+  e.textContent = txt;
+  e.style.color = ['#ffd166','#6ecbff','#ff4d6d','#8aff80','#fff'][Math.floor(Math.random()*5)];
+  document.body.appendChild(e);
+  setTimeout(() => e.remove(), 1100);
+}
+
+function confetti(txt='生日快乐！', n=44) {
+  const box = $('confetti');
+  const icons = ['⚽','🎂','🎉','🤖','🥩','💙','⭐','🇳🇴','🍮','9️⃣','🎩','🥅','💞','📺'];
+  for(let i = 0; i < n; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.textContent = icons[Math.floor(Math.random() * icons.length)];
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.top = '-20px';
+    p.style.setProperty('--dx', (Math.random() * 220 - 110) + 'px');
+    p.style.animationDelay = Math.random() * 180 + 'ms';
+    box.appendChild(p);
+    setTimeout(() => p.remove(), 1500);
+  }
+  easter(txt);
+}
+
+function spawnBall() {
+  const b = document.createElement('div');
+  b.className = 'floating-ball';
+  b.textContent = '⚽';
+  b.style.left = Math.random() * 82 + 6 + 'vw';
+  b.style.top = Math.random() * 62 + 18 + 'vh';
+  b.onclick = () => {
+    confetti('GOOOOAL！你点进了一个近角', 20);
+    b.remove();
+  };
+  document.body.appendChild(b);
+  setTimeout(() => b.remove(), 9000);
+}
+
+function tapRobot(force=false) {
+  state.taps++;
+  bump(force ? 5 : 1);
+  $('robot').classList.add('shake');
+  setTimeout(() => $('robot').classList.remove('shake'), 360);
+  easter(force ? '魔人布欧模式：哈兰德把网页顶进球门！' : '机器人启动：work hard, stay humble.');
+  for(let i = 0; i < 8; i++) {
+    setTimeout(() => floatText(
+      innerWidth * Math.random(),
+      innerHeight * (.25 + .5 * Math.random()),
+      snippets[Math.floor(Math.random() * snippets.length)]
+    ), i * 60);
+  }
+  if(state.taps % 5 === 0) confetti('连击触发！魔人能量 +26', 26);
+}
+
+function ballTrigger(ev) {
+  ev.stopPropagation();
+  bump(2);
+  easter('足球：我只是路过，突然就进门了。');
+  for(let i = 0; i < 12; i++) {
+    floatText(
+      ev.clientX + (Math.random() * 120 - 60),
+      ev.clientY + (Math.random() * 90 - 45),
+      '⚽'
+    );
+  }
+}
+
+function birthdayMode() {
+  bump(3);
+  confetti('🎂 26 岁生日快乐：愿所有球都不越位，所有糖都不蛀牙。', 80);
+}
+
+function chaos() {
+  document.body.animate([
+    {filter:'hue-rotate(0deg) saturate(1)'},
+    {filter:'hue-rotate(35deg) saturate(1.45)'},
+    {filter:'hue-rotate(0deg) saturate(1)'}
+  ], {duration: 900});
+  confetti('魔人模式：启动！', 60);
+  for(let i = 0; i < 5; i++) setTimeout(spawnBall, i * 420);
+  tapRobot(true);
+}
+
+function renderDims() {
+  const root = $('dimensionCards');
+  root.innerHTML = Object.entries(dims).map(([code, d], i) =>
+    `<article class="card" style="--tilt:${(i%5-2)*.4}deg" data-trigger="${code}" onclick="dimHit(event,'${code}')">
+      <div class="code">${code}</div>
+      <h3>${d[0]}</h3>
+      <p>${d[1]}</p>
+    </article>`
+  ).join('');
+}
+
+function dimHit(ev, code) {
+  bump(1);
+  floatText(ev.clientX, ev.clientY, code + ' +1');
+  easter(code + ' 维度被触发：' + dims[code][0]);
+}
+
+function renderQuiz() {
+  const root = $('quiz');
+  root.innerHTML = qs.map((x, i) =>
+    `<article class="q" id="q${i}" data-emoji="${x.emoji}">
+      <h3>${String(i+1).padStart(2,'0')}｜${x.title}</h3>
+      <p class="q-context">${x.context}</p>
+      <div class="choices">
+        ${x.options.map((opt,j) =>
+          `<button class="choice" data-i="${i}" data-letter="${opt.letter}">
+            ${opt.text}
+          </button>`
+        ).join('')}
+      </div>
+    </article>`
+  ).join('');
+}
+
+function pick(i, letter) {
+  const old = state.answers[i];
+  if(old) state.scores[old]--;
+  state.answers[i] = letter;
+  state.scores[letter]++;
+  document.querySelectorAll(`[data-i="${i}"]`).forEach(btn =>
+    btn.classList.toggle('selected', btn.dataset.letter === letter)
+  );
+  $('q' + i).classList.add('answered');
+  bump(1);
+  updateResult();
+  if(Object.keys(state.answers).length === state.totalQuestions) {
+    setTimeout(() => {
+      confetti('🎂 报告已出炉', 40);
+      $('resultPanel').scrollIntoView({behavior: 'smooth', block: 'center'});
+    }, 300);
+  }
+  if(Math.random() < .18) easter(snippets[Math.floor(Math.random() * snippets.length)]);
+}
+
+function getTopDims(n=4) {
+  return Object.entries(state.scores)
+    .sort((a,b) => b[1] - a[1])
+    .slice(0, n);
+}
+
+function updateResult() {
+  const done = Object.keys(state.answers).length;
+  $('bar').style.width = (done / state.totalQuestions * 100) + '%';
+  $('progressCount').textContent = done + ' / ' + state.totalQuestions;
+
+  const top4 = getTopDims(4);
+  const code = top4.map(x => x[0]).join('');
+  $('type').textContent = done > 0 ? code.split('').join(' ') : '— — — —';
+
+  if(done > 0) {
+    $('typeName').textContent = generatePersonalityName(top4);
+    $('desc').textContent = generatePersonalityDesc(top4, done);
+    $('topDims').innerHTML = top4.map(([k,v]) =>
+      `<span class="dim-tag">${k} · ${dims[k][0]}</span>`
+    ).join('');
+    $('chips').innerHTML =
+      `<span class="chip">完成度 ${done}/${state.totalQuestions}</span>`;
+    $('share').value =
+      `我的哈迷人格是【${code}】！${generatePersonalityName(top4)}。` +
+      `最强维度：${top4.map(([k]) => dims[k][0]).join('、')}。` +
+      `26 岁生日限定检测，work hard, stay humble, smiling. #哈兰德26岁生日快乐 #EHTI`;
+
+    const avgX = state.scores.S + state.scores.E + state.scores.C + state.scores.H;
+    const avgY = state.scores.K + state.scores.G + state.scores.T + state.scores.D;
+    $('pitch').style.setProperty('--x', Math.min(80, 25 + avgX * 2.2) + '%');
+    $('pitch').style.setProperty('--y', Math.max(18, 72 - avgY * 1.8) + '%');
+  }
+}
+
+function generatePersonalityName(top4) {
+  const [a,b,c,d] = top4.map(x => x[0]);
+  const nameMap = {
+    'S':['糖度超标型','嗑糖第一线','狗粮品鉴师'],
+    'N':['奥丁之父','峡湾巨人门徒','北欧神话传承人'],
+    'G':['进球记账员','数据大管家','联赛统计狂魔'],
+    'R':['机器人信徒','挪威API运维','固件更新观察员'],
+    'T':['门前嗅觉党','饼艺鉴赏家','禁区美食家'],
+    'H':['集锦循环党','高光复读机','名场面收藏家'],
+    'I':['冷面杀手粉','冷静应援团','表面淡定党'],
+    'E':['启动先锋','直塞起跑器','第一排常驻观众'],
+    'M':['梗图制造机','表情包大王','P 图速度世界级'],
+    'L':['护短协会长','辩坛不败传说','对线常胜将军'],
+    'K':['终结者协会','禁区直觉','球门放大症患者'],
+    'V':['VAR 创伤者','画线研究员','庆祝刹车侠'],
+    'Y':['YouTuber 粉头','vlog 追更达人','场外观察者'],
+    'P':['喂饼专家','传球艺术家','德布劳内信徒'],
+    'C':['蓝月死忠','City 人 City 魂','伊蒂哈德常住民'],
+    'D':['大场面先生','德比专业户','决战之夜选手'],
+    'Z':['Zen 最终党','进化论信徒','永远相信下一年'],
+    'Q':['默念型应援','心诚则灵','无声助威团'],
+    'J':['毒奶艺术家','反向操作大师','赛前装死专家'],
+    'O':['乐天主义代表','下一球信徒','补时乐观主义者'],
+    'A':['气场学专家','压迫感研究员','后卫恐惧症患者'],
+    'B':['黄黑回忆录','威斯特法伦常客','多特时期守护人'],
+    'U':['嗓子报废党','远程助威团','90 分钟不停嘴'],
+    'W':['热身观察家','赛前分析师','草皮研究员'],
+    'F':['反击起跑器','断球冲刺党','快攻第一排'],
+    'X':['玄学研究会','未知因子教徒','科学盲区探险家']
+  };
+  const aName = (nameMap[a] || ['神秘维度'])[0];
+  const bName = (nameMap[b] || ['混合维度'])[0];
+  return aName + ' × ' + bName;
+}
+
+function generatePersonalityDesc(top4, done) {
+  const names = top4.map(([k]) => dims[k][0]);
+  const a = top4[0][0];
+  const descs = {
+    'S':'你看球的主要动力是糖。进球重要，但小两口的日常更让你姨母笑。甜度超标是你的常态，狗粮管饱是你的追求。',
+    'N':'你坚信他是从挪威峡湾里走出来的巨人。他儿子叫 Odin，他自己就是奥丁他爹。每一粒进球都像雷神之锤砸下来，带着北欧神话的重量。',
+    'G':'你的大脑就是一座进球档案馆。每一粒进球都按年份、对手、角度、庆祝动作分类归档，检索速度比搜索引擎还快。别人看球是享受，你看球是做藏品入库。',
+    'R':'你从心底相信他不是人类。进球只是 API 调用成功，受伤是固件升级，庆祝是系统彩蛋。work hard stay humble，机器人守则第一条。',
+    'T':'你对"吃饼"这个词有独到见解。能把饼吃进去也是一种天赋，而且是顶级天赋。门前嗅觉这东西，科学解释不了，你也不需要解释。',
+    'H':'你的相册就是一部个人高光集锦。三分钟的视频你能循环二十遍，还硬说这是"技术复盘"。集锦党永不为奴，除非出了更长的集锦。',
+    'I':'你表面稳如老狗，内心早已放烟花。冷面是你的保护色，尖叫是你的内在真我。别人以为你佛系，其实你只是懒得解释。',
+    'E':'你的启动速度比边卫还快三拍。直塞还没出脚，你已经在禁区里找好位置了。第一排观众席是你的永久席位，从不迟到。',
+    'M':'你产出的梗图比进球还多。正经分析不会，P 图速度世界级。你的武器库没有数据，只有表情包和 GIF。',
+    'L':'谁说他不好，你能讲到凌晨两点。护短是刻进 DNA 的，数据、集锦、关键战表现，三件套随时准备上线。',
+    'K':'你对"终结者"这三个字有独到理解。他一抬脚你就知道有了，不一定非要是绝杀——只要他在禁区里，你就觉得球门比平时大两倍。',
+    'V':'每次庆祝前你都先看裁判手势。不是你悲观，是 VAR 教你做人。画线、越位、手球，这些词让你 PTSD 发作。',
+    'Y':'你追他的 vlog 比追番还勤。场上魔人，场下憨憨，这种反差你最吃。订阅、点赞、开小铃铛，一个都不能少。',
+    'P':'你是喂饼艺术的鉴赏家。德布劳内的直塞是你心中的白月光，传中的弧线、倒三角的时机、外脚背的巧妙，你都能品出花来。哈兰德进再多球，你都觉得一半军功章该记在 KDB 头上。',
+    'C':'蓝色是你的本命色。伊蒂哈德的风里都飘着进球的味道。一日蓝月，终身蓝月，City till I die。',
+    'D':'越大的场面你越兴奋。德比、欧冠、决赛，噪音越大，你越嗨。大场面爱好者的人生，就是要在最吵的地方庆祝。',
+    'Z':'你相信他的上限还没到。每一年都觉得"这就是巅峰了吧"，然后下一年他又进化了。Zen 流的终极信念：永远期待下一个进球。',
+    'Q':'你是默念型应援的代表人物。嘴里不说，心里每球都在念经。心诚则灵，是你的四字真言。',
+    'J':'你是毒奶艺术的践行者。赛前说不行，赛后装懊悔，实则暗爽。反向操作是你的拿手好戏，毒奶也是一种信仰。',
+    'O':'你是足球世界里的永恒乐观主义者。0-2 落后？没事，还有时间。补时三分钟？够他进俩。天塌下来有下一球顶着，乐观是你的超能力。',
+    'A':'你对气场有独到研究。他往禁区里一站，后卫退的不是一步，是求生欲。气场学掌门人，压迫感收藏家。',
+    'B':'黄黑时期的他在你心里永远有位置。威斯特法伦的南看台，是你青春的坐标。BVB 黄黑回忆，旧糖永远甜。',
+    'U':'看球不喊，等于没看。90 分钟不停嘴，嗓子哑了是勋章。你不是在看球，你是在远程助威，分贝就是你的贡献值。',
+    'W':'热身阶段你就开始做功课。颠球几下、冲刺速度、射门脚感，你都能看出门道。热身观察党的赛前准备，比球员还充分。',
+    'F':'一看到断球你就站起来。反击号角一响，你比边锋冲得还快。快攻第一排，就是你的座位。',
+    'X':'你相信一些科学解释不了的东西。折射、反弹、门将脱手，还有为什么球总是莫名其妙到他脚下。X 因子，懂的都懂。'
+  };
+  const main = descs[a] || '你的人格组合非常独特，26 个维度中你最强的那面已经写在上面了。';
+  if(done < state.totalQuestions) {
+    return main + `（已答 ${done}/${state.totalQuestions} 题，答完将生成完整报告）`;
+  }
+  return main + ` 你的另外两个突出维度是：${names[2]}和${names[3]}。`;
+}
+
+function calcResult() {
+  if(Object.keys(state.answers).length < state.totalQuestions) {
+    easter('还有题没选！哈兰德都跑到禁区了你还在犹豫。');
+    return;
+  }
+  confetti('🎉 检测完成！你的 4 字母人格已锁定！', 60);
+  $('resultPanel').scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function randomFill() {
+  qs.forEach((x, i) => {
+    const opt = x.options[Math.floor(Math.random() * x.options.length)];
+    pick(i, opt.letter);
+  });
+  confetti('随机人格已生成：VAR 表示无法推翻', 40);
+}
+
+function resetQuiz() {
+  state.answers = {};
+  Object.keys(state.scores).forEach(k => state.scores[k] = 0);
+  renderQuiz();
+  updateResult();
+  easter('已重测：上一轮判罚取消');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// 初始化
+renderDims();
+renderQuiz();
+updateResult();
+
+// 事件绑定
+$('quiz').addEventListener('click', e => {
+  const btn = e.target.closest('.choice');
+  if(btn) pick(+btn.dataset.i, btn.dataset.letter);
+});
+
+$('robot').addEventListener('click', () => tapRobot(false));
+$('ball').addEventListener('click', ballTrigger);
+$('birthdayBadge').addEventListener('click', () => {
+  confetti('26 岁生日快乐：蛋糕和进球都要双份');
+  bump(3);
+});
+
+$('chaosBtn').onclick = chaos;
+$('randomBtn').onclick = randomFill;
+$('copyBtn').onclick = async () => {
+  try {
+    await navigator.clipboard.writeText($('share').value);
+    easter('结果已复制，朋友圈请注意控球率');
+  } catch {
+    easter('复制失败，但你的哈迷气质复制不了');
+  }
+};
+
+document.querySelectorAll('.trigger').forEach(btn => btn.onclick = () => {
+  const a = btn.dataset.action;
+  const map = {
+    confetti: '生日彩带发射！',
+    goal: '进球警报：请全体起立！',
+    robot: '🤖：work hard, stay humble, smiling.',
+    hair: '金发滤镜已开启：今晚亮度 +26%',
+    var: 'VAR 检查完成：快乐有效，进球有效',
+    meat: '赛前加餐：蛋糕旁边放牛排不过分吧',
+    norway: '挪威冷风吹来：对方中卫开始发抖',
+    hat: '帽子戏法预定区：先把帽子摆好'
+  };
+  if(a === 'confetti' || a === 'goal' || a === 'hat') {
+    confetti(map[a], a === 'hat' ? 50 : 30);
+  } else {
+    easter(map[a]);
+  }
+  if(a === 'goal' || a === 'hat') spawnBall();
+  bump(1);
+});
+
+// 键盘彩蛋
+let secret = '';
+const eggMap = {
+  'haaland': () => chaos(),
+  '26': () => birthdayMode(),
+  'goal': () => { confetti('进球！GOOOOOOAL！', 30); spawnBall(); },
+  'hattrick': () => { confetti('帽子戏法！太猛了！', 60); for(let i=0;i<3;i++) spawnBall(); },
+  'kdb': () => { easter('� KDB 喂饼大师认证！德布劳内直塞 + 哈兰德破门 = 布丁组合！'); bump(3); },
+  'var': () => easter(Math.random()<.5 ? 'VAR 判定：哈迷浓度有效，庆祝继续。' : 'VAR 判定：你的理智越位了，但进球有效。'),
+  '9': () => { bump(9); easter('9 号能量注入：禁区已开放。'); floatText(innerWidth/2, innerHeight/2, '9️⃣+9'); },
+  'champion': () => confetti('🏆 我们是冠军！', 80),
+  'manchester': () => easter('💙 曼城是蓝色的！'),
+  'norway': () => easter('🇳🇴 奥丁他爸正在苏醒……'),
+  'sugar': () => { confetti('💞 嗑糖模式启动！糖度超标警告！', 40); easter('S 维度：嗑糖人狂喜！'); },
+  'odin': () => { easter('⚡ 奥丁之父认证！挪威巨人力量 +26！'); bump(5); },
+  'youtube': () => { easter('📺 YouTuber 粉头认证！订阅、点赞、小铃铛！'); bump(3); },
+  'workhard': () => { easter('💪 work hard, stay humble, smiling.'); bump(3); }
+};
+
+function checkEgg() {
+  let triggered = false;
+  for(const key of Object.keys(eggMap)) {
+    if(secret.includes(key)) {
+      eggMap[key]();
+      secret = '';
+      triggered = true;
+      break;
+    }
+  }
+  return triggered;
+}
+
+const kbdInput = $('kbdInput');
+kbdInput.addEventListener('input', e => {
+  secret = e.target.value.toLowerCase();
+  if(checkEgg()) {
+    kbdInput.value = '';
+    secret = '';
+  }
+});
+
+// 提示词点击
+$('kbdHints').addEventListener('click', e => {
+  if(e.target.tagName === 'CODE') {
+    kbdInput.value = e.target.textContent;
+    kbdInput.focus();
+    kbdInput.dispatchEvent(new Event('input'));
+  }
+});
+
+// 全局键盘监听（即使不聚焦输入框也能触发）
+window.addEventListener('keydown', e => {
+  if(document.activeElement === kbdInput) return;
+  if(e.key && e.key.length === 1) {
+    secret += e.key.toLowerCase();
+    secret = secret.slice(-20);
+    checkEgg();
+  }
+});
+
+// 页面空白处点击彩蛋
+document.addEventListener('click', e => {
+  if(e.target.closest('button,.card,.type-card,.toy,.trigger,.robot,.ball,.choice,.pill,.kbd-input,input')) return;
+  if(Math.random() < .12) {
+    bump(1);
+    floatText(e.clientX, e.clientY, '9️⃣');
+  }
+});
+
+// 随机飘球
+setInterval(() => { if(Math.random() < .24) spawnBall() }, 8000);
+
+// 初始欢迎
+setTimeout(() => easter('欢迎来到 EHTI：work hard, stay humble, smiling.'), 600);
+</script>
+</body>
+</html>
